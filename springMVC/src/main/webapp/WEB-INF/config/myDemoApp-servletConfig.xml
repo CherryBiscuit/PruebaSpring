@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+
+	<!-- setear en namespaces el mvc, asi el proyecto se va a manejar con anotaciones -->
+	<mvc:annotation-driven/>
+	
+	<!-- Despues seteo el scanner de componentes, para que spring pueda buscar las anotaciones. En namespaces es context -->
+	<!-- en el base package le indico en que package van a estar los controladores que van a ser anotados -->
+	<context:component-scan base-package="com.demo.controllers"></context:component-scan>
+
+		
+	<!-- Este bean, es un objeto de la clase viewResolver,  -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!-- En value, tiene que estar donde van a estar las vistas. En este caso, los jsp  -->
+		<property name="prefix" value="WEB-INF/jsp/"/>
+		<property name="suffix" value=".jsp"/>
+	</bean>
+</beans>
